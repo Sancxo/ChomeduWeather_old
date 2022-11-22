@@ -1,0 +1,104 @@
+main {
+  max-width: 900px;
+  margin: auto;
+}
+
+#contexte {
+  padding: 0 10%;
+}
+
+@media (min-width: 500px) {
+  #contexte {
+    padding: 0 15%;
+  }
+}
+
+@media (min-width: 900px) {
+  #contexte {
+    padding: 0 22%;
+  }
+}
+
+li {
+  margin-top: .5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.ml-1 {
+  margin-left: 1rem;
+}
+
+.fs-3 {
+  font-size: 3rem;
+}
+
+.fs-2 {
+  font-size: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.success {
+  color: #2db92d;
+}
+
+.danger {
+  color: #ff5233;
+}
+
+.block-danger,
+.block-success {
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.block-danger {
+  border-color: #ff5233;
+  background-color: #ff523344;
+}
+
+.block-success {
+  border-color: #2db92d;
+  background-color: #2db92d44;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 0.5s linear alternate infinite;
+}
