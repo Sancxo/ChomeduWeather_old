@@ -8,6 +8,7 @@ import footer from './components/footer';
 
 // web component
 import './components/chart';
+import form from './components/form';
 
 const weatherComponent = await weather();
 
@@ -16,12 +17,12 @@ document.querySelector('#app').innerHTML = `
     ${header()}
     
     <main>
-      ${context()}
       ${weatherComponent}
+      ${context()}
       <div id="chart-container">
         <canvas id="chart" is="chart-canvas">Un problème à eu lieu lors du chargement du graphique ...</canvas>
       </div>
-    </main >
+    </main>
     
     ${footer()}
   </div >

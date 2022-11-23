@@ -37,6 +37,10 @@ li {
   align-items: center;
 }
 
+.column {
+  flex-direction: column;
+}
+
 .success {
   color: #2db92d;
 }

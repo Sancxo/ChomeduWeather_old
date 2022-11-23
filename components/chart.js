@@ -14,7 +14,7 @@ export class ChartCanvas extends HTMLCanvasElement {
       data: {
         labels: timePeriods.reverse(),
         datasets: [{
-          label: 'Pourcentage de chômeurs depuis 1975',
+          label: 'Taux de chômage',
           data: values.reverse(),
           fill: {
             target: "origin",
