@@ -9,18 +9,20 @@ import footer from './components/footer';
 // web component
 import './components/chart';
 
+const weatherComponent = await weather();
+
 document.querySelector('#app').innerHTML = `
-    <div id="wrapper" class="text-center">
-      ${header()}
-      
-      <main>
-        ${context()}
-        ${await weather()}
-        <div id="chart-container">
-          <canvas id="chart" is="chart-canvas"></canvas>
-        </div>
-      </main >
-      
-      ${footer()}
-    </div >
-  `
+  <div id="wrapper" class="text-center">
+    ${header()}
+    
+    <main>
+      ${context()}
+      ${weatherComponent}
+      <div id="chart-container">
+        <canvas id="chart" is="chart-canvas"></canvas>
+      </div>
+    </main >
+    
+    ${footer()}
+  </div >
+`
