@@ -4,7 +4,7 @@ export default function footer() {
   return `
     <footer>
       <hr />
-      <p>&copy; Simon Tirant ${currentYear}</p>
+      <p>&copy; <a href="https://simontirant.dev/" target="_blank" rel="noopener">Simon Tirant</a> ${currentYear}</p>
     </footer>
   `
 }
