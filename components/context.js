@@ -2,7 +2,7 @@ export default function context() {
   return `
     <div id="contexte">
       <h3>Contexte:</h3>
-      <p>Emmanuel Macron l'a dit, l'assurance chômage doit être <q>&nbsp;plus stricte quand trop d'emplois sont non pourvus, plus généreuse quand le chômage est élevé&nbsp;</q>. Alors à partir du 1er Février 2023, <span class="bold blink">flash promo</span> : c'est -25% sur les durées d'allocations chômage quand l'emploi se porte bien !</p>
+      <p>Emmanuel Macron l'a dit, l'assurance chômage doit être <q>&nbsp;plus stricte quand trop d'emplois sont non pourvus, plus généreuse quand le chômage est élevé&nbsp;</q>. Alors à partir du 1er Février 2023, <span class="bold blink uppercase">flash promo</span> : c'est -25% sur les durées d'allocations chômage quand l'emploi se porte bien !</p>
       <p>Voici donc les nouvelles règles du jeu de la spéculation du marché de l'emploi, la durée de l'ouverture de vos droits à l'assurance chômage sera dégradée de 25% si :</p>
       <ul class="mt-0">
         <li>Le taux de chômage est inférieur à 9% pendant 3 trimestres consécutifs.</li>
