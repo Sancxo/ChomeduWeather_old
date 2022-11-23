@@ -8,7 +8,6 @@ import footer from './components/footer';
 
 // web component
 import './components/chart';
-import form from './components/form';
 
 const weatherComponent = await weather();
 
