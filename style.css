@@ -41,6 +41,11 @@ li {
   margin-top: 0;
 }
 
+.my-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
