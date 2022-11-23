@@ -1,0 +1,13 @@
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 0.5s linear alternate infinite;
+}

@@ -1,0 +1,19 @@
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fs-2 {
+  font-size: 2rem;
+}
+
+.fs-3 {
+  font-size: 3rem;
+}

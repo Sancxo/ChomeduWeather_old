@@ -1,3 +1,7 @@
+@import './shared/styles/_animations.css';
+@import './shared/styles/_fonts.css';
+@import './shared/styles/_spacing.css';
+
 main {
   max-width: 900px;
   margin: auto;
@@ -33,43 +37,6 @@ li {
   align-items: center;
 }
 
-.mb-0 {
-  margin-bottom: 0;
-}
-
-.mt-0 {
-  margin-top: 0;
-}
-
-.my-2 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.ml-1 {
-  margin-left: 1rem;
-}
-
-.fs-3 {
-  font-size: 3rem;
-}
-
-.fs-2 {
-  font-size: 2rem;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
 .success {
   color: #2db92d;
 }
@@ -92,18 +59,4 @@ li {
 .block-success {
   border-color: #2db92d;
   background-color: #2db92d44;
-}
-
-@keyframes blink {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.blink {
-  animation: blink 0.5s linear alternate infinite;
 }
