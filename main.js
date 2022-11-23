@@ -19,7 +19,7 @@ document.querySelector('#app').innerHTML = `
       ${context()}
       ${weatherComponent}
       <div id="chart-container">
-        <canvas id="chart" is="chart-canvas"></canvas>
+        <canvas id="chart" is="chart-canvas">Un problème à eu lieu lors du chargement du graphique ...</canvas>
       </div>
     </main >
     
