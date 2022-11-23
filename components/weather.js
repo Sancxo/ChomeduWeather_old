@@ -1,10 +1,8 @@
-import { nestedDataTable, lastUpdate, loadingApi } from "../shared/api-helper";
+import { nestedDataTable, lastUpdate } from "../shared/api-helper";
 
 export default async function weather() {
-  // console.log(nestedDataTable)
-
   const lastYearsList = []
-  // we gonna push the two last years into lastYearsList
+  // we gonna push only the two last years into lastYearsList
   for (let i = 0; i < 2; i++) {
     lastYearsList.push(Object.keys(nestedDataTable).reverse()[i])
   }
@@ -25,22 +23,18 @@ export default async function weather() {
 
   const condition = lastIndicator < 9 && diff < 0.8 ? true : false;
 
-  if (loadingApi) {
-    return `Loading ...`
-  } else {
-    return `
-      <div id="weather-container" class="my-2 ${condition ? "block-danger" : "block-success"}">
-        <h3>Est-ce le bon moment se faire virer ?</h3>
-        <p class="flex-center mb-0 fs-2 uppercase bold ${condition ? "danger" : "success"}">${condition ? "Non" : "Oui"} ! <span class="fs-3 ml-1">${condition ? "⛈️" : "☀️"}</span></p>
-        <p class="mt-0"><sub>${condition ? "Continuez le <span class='italic'>quiet quitting</span>." : "Lâchez-vous, c'est le moment de partir en beauté !"}</sub></p>
-        <p id="current-indicator" >
-        Au ${currentQuarter} de l'année ${currentYear} : ${lastIndicator}% (${diff})
-        </p >
-        <p id="previous-indicator">
-          Précédement, au ${previousQuarter} de l'année ${previousOrCurrentYear} : ${previousIndicator}%
-        </p>
-        <p><sub>Données mises à jour trimestriellement. Source: <a href="https://www.insee.fr/fr/statistiques/serie/001688527" target="_blank" rel="noopener">INSEE</a>. Dernière mise à jour : ${lastUpdate}.</sub></p>
-      </div>
-    `
-  }
+  return `
+    <div id="weather-container" class="my-2 ${condition ? "block-danger" : "block-success"}">
+      <h3>Est-ce le bon moment se faire virer ?</h3>
+      <p class="flex-center mb-0 fs-2 uppercase bold ${condition ? "danger" : "success"}">${condition ? "Non" : "Oui"} ! <span class="fs-3 ml-1">${condition ? "⛈️" : "☀️"}</span></p>
+      <p class="mt-0"><sub>${condition ? "Continuez le <span class='italic'>quiet quitting</span>." : "Lâchez-vous, c'est le moment de partir en beauté !"}</sub></p>
+      <p id="current-indicator" >
+      Au ${currentQuarter} de l'année ${currentYear} : ${lastIndicator}% (${diff})
+      </p >
+      <p id="previous-indicator">
+        Précédement, au ${previousQuarter} de l'année ${previousOrCurrentYear} : ${previousIndicator}%
+      </p>
+      <p><sub>Données mises à jour trimestriellement. Source: <a href="https://www.insee.fr/fr/statistiques/serie/001688527" target="_blank" rel="noopener">INSEE</a>. Dernière mise à jour : ${lastUpdate}.</sub></p>
+    </div>
+  `
 }

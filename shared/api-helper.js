@@ -1,5 +1,3 @@
-let loadingApi = true;
-
 async function fetchData() {
   return await fetch(
     'https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001688527',
@@ -12,7 +10,6 @@ async function fetchData() {
     }
   )
     .then(resp => {
-      loadingApi = false;
       return resp.text()
     })
     .catch(err => {
@@ -20,7 +17,7 @@ async function fetchData() {
     })
 }
 
-function createDataObject(data) {
+function createDataTables(data) {
   const timePeriods = [];
   const values = [];
 
@@ -53,9 +50,9 @@ const parsedXml = new window.DOMParser().parseFromString(xml, "application/xml")
 
 const dataCollection = parsedXml.getElementsByTagName("Obs");
 
-const [timePeriods, values] = createDataObject(dataCollection);
+const [timePeriods, values] = createDataTables(dataCollection);
 
 const nestedDataTable = createNestedDataObject(timePeriods, values);
 const lastUpdate = parsedXml.getElementsByTagName("Series")[0].attributes["LAST_UPDATE"].nodeValue;
 
-export { loadingApi, lastUpdate, timePeriods, values, nestedDataTable };
+export { lastUpdate, timePeriods, values, nestedDataTable };
