@@ -1,6 +1,4 @@
-import { nestedDataTable, lastUpdate } from "../shared/api-helper";
-
-export default async function weather() {
+export default async function weather(nestedDataTable, lastUpdate) {
   const lastYearsList = []
   // we gonna push only the two last years into lastYearsList
   for (let i = 0; i < 2; i++) {
