@@ -26,7 +26,7 @@ function createDataTables(data) {
     values.push(data[i].attributes["OBS_VALUE"].nodeValue);
   }
 
-  return [timePeriods, values]
+  return [timePeriods.reverse(), values.reverse()]
 }
 
 function createNestedDataObject(timePeriods, values) {
