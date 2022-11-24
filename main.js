@@ -6,10 +6,7 @@ import context from "./components/context";
 import header from './components/header';
 import weather from './components/weather';
 import footer from './components/footer';
-
-// web component
-import './components/charts/chart-1975';
-import './components/charts/chart-10ans';
+import charts from './components/charts';
 
 const weatherComponent = await weather(nestedDataTable, lastUpdate);
 
@@ -20,13 +17,7 @@ document.querySelector('#app').innerHTML = `
     <main>
       ${weatherComponent}
       ${context()}
-      <div id="chart-container">
-        <h3>Graphique des chiffres du chômage de 1975 à nos jours</h3>
-        <canvas id="chart-1975" is="chart-1975">Un problème à eu lieu lors du chargement du graphique ...</canvas>
-        <h3>Graphique des chiffres du chômage sur les 10 dernières années</h3>
-        <canvas id="chart-10ans" is="chart-10ans">Un problème à eu lieu lors du chargement du graphique ...</canvas>
-        <p class="mt-0"><sub>Sources: <a href="https://www.insee.fr/fr/statistiques/serie/001688527" target="_blank" rel="noopener">INSEE</a>. Dernière mise à jour : ${lastUpdate}. N.B.: le graphique ci-dessus peut ne pas s'afficher sur mobile.</sub></p>
-      </div>
+      ${charts(lastUpdate)}
     </main>
     
     ${footer()}
