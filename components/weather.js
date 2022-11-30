@@ -1,3 +1,5 @@
+import simple_nn from "./simple_nn";
+
 export default async function weather(nestedDataTable, lastUpdate) {
   const lastYearsList = []
   // we gonna push only the two last years into lastYearsList
@@ -8,11 +10,14 @@ export default async function weather(nestedDataTable, lastUpdate) {
   const currentYear = lastYearsList[0];
 
   const currentYearQuarterList = Object.keys(nestedDataTable[currentYear]); // list of every quarter passed this year from newer to older
-  const currentQuarter = currentYearQuarterList[0];
+  const currentQuarter = currentYearQuarterList.reverse()[0];
 
   // I current_quarter is "Q1", the previous one is "Q4" from previous year; if not it's previous quarter from same year.
   const previousOrCurrentYear = currentQuarter === "Q1" ? lastYearsList[1] : currentYear;
-  const previousQuarter = currentQuarter === "Q1" ? "Q4" : currentYearQuarterList[1]
+  const currentOrNextYear = currentQuarter === "Q4" ? parseInt(currentYear) + 1 : currentYear;
+
+  const previousQuarter = currentQuarter === "Q1" ? "Q4" : currentYearQuarterList[1];
+  const nextQuarter = currentQuarter === "Q1" && "Q2" || currentQuarter === "Q2" && "Q3" || currentQuarter === "Q3" && "Q4" || currentQuarter === "Q4" && "Q1"
 
   const lastIndicator = nestedDataTable[currentYear][currentQuarter];
   const previousIndicator = nestedDataTable[previousOrCurrentYear][previousQuarter];
@@ -34,5 +39,6 @@ export default async function weather(nestedDataTable, lastUpdate) {
       </p>
       <p><sub>Données mises à jour trimestriellement. Source: <a href="https://www.insee.fr/fr/statistiques/serie/001688527" target="_blank" rel="noopener">INSEE</a>. Dernière mise à jour : ${lastUpdate}.</sub></p>
     </div>
+    ${simple_nn(nextQuarter, currentOrNextYear)}
   `
 }

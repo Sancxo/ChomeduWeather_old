@@ -7,7 +7,6 @@ import header from './components/header';
 import weather from './components/weather';
 import footer from './components/footer';
 import charts from './components/charts';
-import simple_nn from './components/simple_nn';
 
 const weatherComponent = await weather(nestedDataTable, lastUpdate);
 
@@ -17,7 +16,6 @@ document.querySelector('#app').innerHTML = `
     
     <main>
       ${weatherComponent}
-      ${simple_nn()}
       ${context()}
       ${charts(lastUpdate)}
     </main>
