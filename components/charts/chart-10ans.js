@@ -5,7 +5,7 @@ export class Chart10ans extends HTMLCanvasElement {
   constructor() {
     self = super();
 
-    const [lastTimePeriods, lastValues] = this.getLast10Years(timePeriods.reverse(), values.reverse());
+    const [lastTimePeriods, lastValues] = this.getLast10Years(timePeriods, values);
 
     this.createChart(self, lastTimePeriods, lastValues);
 
@@ -17,20 +17,20 @@ export class Chart10ans extends HTMLCanvasElement {
 
     // The iteration is on the 40 latest quarters so we get 10 full years
     for (let i = 0; i < 40; i++) {
-      lastTimePeriods.push(timePeriods[i]);
-      lastValues.push(values[i]);
+      lastTimePeriods.push(timePeriods[timePeriods.length - i]);
+      lastValues.push(values[values.length - i]);
     }
-    return [lastTimePeriods, lastValues]
+    return [lastTimePeriods.reverse(), lastValues.reverse()]
   }
 
   createChart = (canvas, labels, data) => {
     new Chart(canvas, {
       type: "line",
       data: {
-        labels: labels.reverse(),
+        labels: labels,
         datasets: [{
           label: 'Taux de chômage',
-          data: data.reverse(),
+          data: data,
           fill: {
             target: "origin",
             above: "#4682B444"
