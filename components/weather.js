@@ -1,6 +1,18 @@
+import { getAllPredictions, saveGroundTruth } from "../shared/helpers/supabase.helper";
 import perceptron from "./perceptron";
 
 export default async function weather(nestedDataTable, lastUpdate) {
+  async function setTruthWhenAvailable() {
+    const data = await getAllPredictions();
+
+    for (let i = 0; i < data.length; i++) {
+      const [year, quarter] = data[i].time_period.split("-");
+
+      // We check if the nestedDataTable has value for this time period
+      if (nestedDataTable[year][quarter]) saveGroundTruth(data[i].time_period, nestedDataTable[year][quarter])
+    }
+  }
+
   const lastYearsList = []
   // we gonna push only the two last years into lastYearsList
   for (let i = 0; i < 2; i++) {
@@ -12,7 +24,7 @@ export default async function weather(nestedDataTable, lastUpdate) {
   const currentYearQuarterList = Object.keys(nestedDataTable[currentYear]); // list of every quarter passed this year from newer to older
   const currentQuarter = currentYearQuarterList.reverse()[0];
 
-  // I current_quarter is "Q1", the previous one is "Q4" from previous year; if not it's previous quarter from same year.
+  // If current_quarter is "Q1", the previous one is "Q4" from previous year; if not it's previous quarter from same year.
   const previousOrCurrentYear = currentQuarter === "Q1" ? lastYearsList[1] : currentYear;
   const currentOrNextYear = currentQuarter === "Q4" ? parseInt(currentYear) + 1 : currentYear;
 
@@ -25,6 +37,8 @@ export default async function weather(nestedDataTable, lastUpdate) {
   const diff = (lastIndicator - previousIndicator).toFixed(1);
 
   const condition = lastIndicator < 9 && diff < 0.8 ? true : false;
+
+  setTruthWhenAvailable();
 
   return `
     <div id="weather-container" class="my-2 ${condition ? "block-danger" : "block-success"}">

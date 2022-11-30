@@ -1,4 +1,5 @@
 import { values } from "../shared/helpers/api.helper";
+import { savePrediction } from "../shared/helpers/supabase.helper";
 
 export default function perceptron(nextQuarter, currentOrNextYear) {
   function predict(data) {
@@ -41,10 +42,13 @@ export default function perceptron(nextQuarter, currentOrNextYear) {
   const currentPrediction = predict(values);
   const diff = (currentPrediction - values[values.length - 1]).toFixed(1);
   const condition = currentPrediction < 9 && diff < 0.8 ? true : false;
+  const nextTimePeriod = `${currentOrNextYear}-${nextQuarter}`;
+
+  savePrediction(currentPrediction, nextTimePeriod);
 
   return `
     <div>
-      <p class="mb-0 bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain (${nextQuarter} ${currentOrNextYear}): ${currentPrediction} (${diff})</p>
+      <p class="mb-0 bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain (${nextTimePeriod}): ${currentPrediction} (${diff})</p>
       <p class="mt-0 italic"><sub>N.B.: cet indice prévisionnel est calculé par le présent site avec un réseau de neurones simple (perceptron), entrainé partir des chiffres trimestriels du chômage de 1975 à nos jours tels qu'établis par l'INSEE. Cet indice est totalement hypothétique, peut ne pas refléter la réalité du prochain trimestre et ne dépend pas de l'INSEE.</sub></p>
     </div>
   `
