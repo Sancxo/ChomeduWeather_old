@@ -1,6 +1,6 @@
-import { evolutionsList, values } from "../shared/api-helper";
+import { values } from "../shared/api-helper";
 
-export default function simple_nn(nextQuarter, currentOrNextYear) {
+export default function perceptron(nextQuarter, currentOrNextYear) {
   function predict(data) {
     let weight = 0.1;
     const alpha = 0.001;
@@ -44,8 +44,8 @@ export default function simple_nn(nextQuarter, currentOrNextYear) {
 
   return `
     <div>
-      <p class="mb-0 bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain(${nextQuarter} ${currentOrNextYear}): ${currentPrediction} (${diff})</p>
-      <p class="mt-0 italic"><sub>N.B.: cet indice prévisionnel est calculé par le présent site avec un réseau de neurones simple (perceptron), entrainé partir des chiffres du chômage de 1975 à nos jours tels qu'établis par l'INSEE. Cet indice est totalement hypothétique, peut ne pas refléter la réalité du prochain trimestre et ne dépend pas de l'INSEE.</sub></p>
+      <p class="mb-0 bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain (${nextQuarter} ${currentOrNextYear}): ${currentPrediction} (${diff})</p>
+      <p class="mt-0 italic"><sub>N.B.: cet indice prévisionnel est calculé par le présent site avec un réseau de neurones simple (perceptron), entrainé partir des chiffres trimestriels du chômage de 1975 à nos jours tels qu'établis par l'INSEE. Cet indice est totalement hypothétique, peut ne pas refléter la réalité du prochain trimestre et ne dépend pas de l'INSEE.</sub></p>
     </div>
   `
 }

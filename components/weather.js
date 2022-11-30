@@ -1,4 +1,4 @@
-import simple_nn from "./simple_nn";
+import perceptron from "./perceptron";
 
 export default async function weather(nestedDataTable, lastUpdate) {
   const lastYearsList = []
@@ -39,6 +39,6 @@ export default async function weather(nestedDataTable, lastUpdate) {
       </p>
       <p><sub>Données mises à jour trimestriellement. Source: <a href="https://www.insee.fr/fr/statistiques/serie/001688527" target="_blank" rel="noopener">INSEE</a>. Dernière mise à jour : ${lastUpdate}.</sub></p>
     </div>
-    ${simple_nn(nextQuarter, currentOrNextYear)}
+    ${perceptron(nextQuarter, currentOrNextYear)}
   `
 }
