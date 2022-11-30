@@ -1,6 +1,6 @@
 import { evolutionsList, values } from "../shared/api-helper";
 
-export default function simple_nn() {
+export default function simple_nn(nextQuarter, currentOrNextYear) {
   function predict(data) {
     let weight = 0.1;
     const alpha = 0.001;
@@ -32,7 +32,7 @@ export default function simple_nn() {
         }
         // console.log(`Train n° ${i}, iteration ${j}: error is ${currentErrors[j]} and prediction is ${prediction}`)
       }
-      console.info(`Train n°${i} terminated with prediction at ${finalPrediction}, last error measurement was ${currentErrors[currentErrors.length - 2]}`)
+      // console.info(`Train n°${i} terminated with prediction at ${finalPrediction}, last error measurement was ${currentErrors[currentErrors.length - 2]}`)
     }
 
     return finalPrediction.toFixed(1);
@@ -44,7 +44,8 @@ export default function simple_nn() {
 
   return `
     <div>
-      <p class="bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain: ${currentPrediction} (${diff})</p>
+      <p class="mb-0 bold ${condition ? "danger" : "success"}">Prédiction pour le trimestre prochain(${nextQuarter} ${currentOrNextYear}): ${currentPrediction} (${diff})</p>
+      <p class="mt-0 italic"><sub>N.B.: cet indice prévisionnel est calculé par le présent site avec un réseau de neurones simple (perceptron), entrainé partir des chiffres du chômage de 1975 à nos jours tels qu'établis par l'INSEE. Cet indice est totalement hypothétique, peut ne pas refléter la réalité du prochain trimestre et ne dépend pas de l'INSEE.</sub></p>
     </div>
   `
 }
