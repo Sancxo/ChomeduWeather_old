@@ -29,6 +29,16 @@ function createDataTables(data) {
   return [timePeriods.reverse(), values.reverse()]
 }
 
+function calculateEvolutions(data) {
+  const evolutionsList = [];
+
+  for (let i = 1; i < data.length; i++) {
+    evolutionsList.push((data[i] - data[i - 1]).toFixed(1));
+  }
+
+  return evolutionsList;
+}
+
 function createNestedDataObject(timePeriods, values) {
   const object = new Object();
 
@@ -51,8 +61,9 @@ const parsedXml = new window.DOMParser().parseFromString(xml, "application/xml")
 const dataCollection = parsedXml.getElementsByTagName("Obs");
 
 const [timePeriods, values] = createDataTables(dataCollection);
+const evolutionsList = calculateEvolutions(values);
 
 const nestedDataTable = createNestedDataObject(timePeriods, values);
 const lastUpdate = parsedXml.getElementsByTagName("Series")[0].attributes["LAST_UPDATE"].nodeValue;
 
-export { lastUpdate, timePeriods, values, nestedDataTable };
+export { lastUpdate, timePeriods, values, evolutionsList, nestedDataTable };
