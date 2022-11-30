@@ -1,5 +1,5 @@
 import { Chart } from "chart.js/auto";
-import { timePeriods, values } from "../../shared/api-helper";
+import { timePeriods, values } from "../../shared/helpers/api.helper";
 
 export class Chart1975 extends HTMLCanvasElement {
   constructor() {

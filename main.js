@@ -1,5 +1,5 @@
 import './style.css';
-import { nestedDataTable, lastUpdate } from './shared/api-helper';
+import { nestedDataTable, lastUpdate } from './shared/helpers/api.helper';
 
 // functionnal components
 import context from "./components/context";

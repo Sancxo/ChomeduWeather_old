@@ -1,4 +1,4 @@
-import { values } from "../shared/api-helper";
+import { values } from "../shared/helpers/api.helper";
 
 export default function perceptron(nextQuarter, currentOrNextYear) {
   function predict(data) {
