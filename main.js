@@ -9,6 +9,7 @@ import header from './components/header';
 import weather from './components/weather';
 import footer from './components/footer';
 import charts from './components/charts';
+import predictionsResults from './components/predictionsResults';
 
 const weatherComponent = await weather(nestedDataTable, lastUpdate);
 
@@ -28,10 +29,11 @@ document.querySelector('#app').innerHTML = `
   <div id="wrapper" class="text-center">
     ${header()}
     
-    <main>
+    <main class="mx-auto">
       ${weatherComponent}
       ${context()}
       ${charts(lastUpdate)}
+      ${predictionsResults(data)}
     </main>
     
     ${footer()}
