@@ -1,5 +1,7 @@
 import './style.css';
 import { nestedDataTable, lastUpdate } from './shared/helpers/api.helper';
+import { getAllPredictions, saveGroundTruth } from "./shared/helpers/supabase.helper";
+
 
 // functionnal components
 import context from "./components/context";
@@ -9,6 +11,18 @@ import footer from './components/footer';
 import charts from './components/charts';
 
 const weatherComponent = await weather(nestedDataTable, lastUpdate);
+
+async function setGroundTruthWhenAvailable(data) {
+  for (let i = 0; i < data.length; i++) {
+    const [year, quarter] = data[i].time_period.split("-");
+
+    // We check if the nestedDataTable has value for this time period
+    if (nestedDataTable[year][quarter]) saveGroundTruth(data[i].time_period, nestedDataTable[year][quarter])
+  }
+}
+
+const data = await getAllPredictions();
+setGroundTruthWhenAvailable(data);
 
 document.querySelector('#app').innerHTML = `
   <div id="wrapper" class="text-center">
