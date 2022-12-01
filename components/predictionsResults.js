@@ -35,19 +35,22 @@ export default function predictionsResults(data) {
   }
 
   return `
-    <table class="mx-auto w-100">
-      <thead>
-        <tr>
-          <th>N°</th>
-          <th>Période</th>
-          <th>Prédiction</th>
-          <th>Ground truth<sup>*</sup></th>
-          <th>Succès/échec</th>
-        <tr>
-      </thead>
-      <tbody>
-        ${createRows(data)}
-      </tbody>
-    </table>
+    <div id="predictions-table" class="my-2">
+      <h3>Archive des prédictions passées:</h3>
+      <table class="mx-auto w-100">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Période</th>
+            <th>Prédiction</th>
+            <th>Ground truth<sup>*</sup></th>
+            <th>Succès/échec</th>
+          <tr>
+        </thead>
+        <tbody>
+          ${createRows(data)}
+        </tbody>
+      </table>
+    </div>
   `
 }

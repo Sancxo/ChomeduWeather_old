@@ -4,7 +4,7 @@ import './charts/chart-10ans';
 
 export default function charts(lastUpdate) {
   return `
-    <div id="chart-container">
+    <div id="chart-container" class="my-2">
       <h3>Fun with charts:</h3>
       <h4>Graphique des chiffres du chômage de 1975 à nos jours</h4>
       <canvas id="chart-1975" is="chart-1975">Un problème à eu lieu lors du chargement du graphique ...</canvas>
