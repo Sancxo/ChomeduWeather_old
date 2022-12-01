@@ -51,6 +51,7 @@ export default function predictionsResults(data) {
           ${createRows(data)}
         </tbody>
       </table>
+      <p class="mt-0"><small>*<span class="italic">Ground truth</span>: Valeur faisant office de vérité observée sur le terrain; ici il s'agit du chiffre retourné par l'INSEE le trimestre suivant la prédiction.</small></p>
     </div>
   `
 }
