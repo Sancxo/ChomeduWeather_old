@@ -1,10 +1,10 @@
 @import './shared/styles/_animations.css';
+@import './shared/styles/_flex.css';
 @import './shared/styles/_fonts.css';
 @import './shared/styles/_spacing.css';
 
 main {
   max-width: 900px;
-  margin: auto;
 }
 
 #contexte {
@@ -23,6 +23,15 @@ main {
   }
 }
 
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+}
+
+table thead tr th {
+  border-bottom: 1px solid black;
+}
+
 li {
   margin-top: .5rem;
 }
@@ -31,14 +40,8 @@ li {
   text-align: center;
 }
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.column {
-  flex-direction: column;
+.w-100 {
+  width: 100%;
 }
 
 .success {
