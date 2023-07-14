@@ -3,32 +3,30 @@ import { savePrediction } from "../shared/helpers/supabase.helper";
 
 export default function perceptron(nextQuarter, currentOrNextYear) {
   function predict(data) {
-    let weight = 0.1;
     const alpha = 0.001;
+    const epochs = 100;
+    let weight = 0.1;
     let finalPrediction;
 
-    const neural_network = (data, weight) => {
-      return data * weight;
+    const neural_network = (dataItem, weight) => {
+      return dataItem * weight;
     }
 
     const error = (prediction, trueValue) => {
       return (prediction - trueValue) ** 2;
     }
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= epochs; i++) {
       const currentErrors = [];
       for (let j = 0; j < data.length; j++) {
         const prediction = neural_network(data[j], weight);
-        let currentError;
         if (data[j + 1]) {
-          currentError = error(prediction, data[j + 1]);
-          currentErrors.push(currentError);
+          currentErrors.push(error(prediction, data[j + 1]));
 
-          const errorPrime = (data[j] * weight - data[j + 1]) * data[j];
+          const errorPrime = (prediction - data[j + 1]) * data[j];
 
           weight -= alpha * errorPrime;
         } else {
-          currentErrors.push("Last iteration reached.");
           finalPrediction = prediction;
         }
         // console.log(`Train n° ${i}, iteration ${j}: error is ${currentErrors[j]} and prediction is ${prediction}`)
